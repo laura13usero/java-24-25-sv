@@ -22,7 +22,7 @@ public class BuscarNumeroEnArray {
         System.out.println();*/
 
         // Número a buscar
-        System.out.print("Ingrese el número que desea buscar en el arreglo: ");
+        System.out.print("Ingresa un numero para saber si está en el array: ");
         numeroBuscado = scanner.nextInt();
 
         // Buscar el número en el array
