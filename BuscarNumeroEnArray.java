@@ -14,12 +14,12 @@ public class BuscarNumeroEnArray {
             array[i] = random.nextInt(100) + 1; // Números aleatorios entre 1 y 100
         }
 
-        // Mostrar el arreglo generado (opcional, para que el usuario vea los números)
-        System.out.println("Array generado:");
+        // Mostrar el array generado (opcional, para que el usuario vea los números)
+        /*System.out.println("Array generado:");
         for (int num : array) {
             System.out.print(num + " ");
         }
-        System.out.println(); // Salto de línea
+        System.out.println();*/
 
         // Número a buscar
         System.out.print("Ingrese el número que desea buscar en el arreglo: ");
