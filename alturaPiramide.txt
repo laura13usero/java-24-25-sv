@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+public class Piramide {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Introduce el numero de bloques: ");
+        
+        List<Integer> piramides = new ArrayList<>();
+        
+        //bucle al que entra siempre, ya que no sabemos cuantas piramides van a meter
+        while(true){
+            //se introduce en string porque el scanner da error si el numero es muy grande
+            String numeroBloquesString = scanner.nextLine();
+            int numeroBloques = Integer.parseInt(numeroBloquesString);
+            
+            //salida del bucle cuando se introduce un 0
+            if(numeroBloques == 0){
+                break;
+            }
+            piramides.add(numeroBloques);
+        }
+        
+        
+        
+        // recorre la lista de piramides y va imprimiendo el numero de pisos de cada piramide
+        int cont = 0;
+        int contArray = piramides.size();
+        while( contArray > 0){
+        
+            int numPisos = cuentaPisos(piramides.get(cont));
+            cont ++;
+            contArray--;
+            System.out.println(numPisos);
+        
+        }
+
+    }
+
+    //recorre el auxbloques, restandole cada vez el numero de bloques de la fila
+    //a la vez aumenta la fila, y cuenta el numero de pisos
+    static int cuentaPisos(int numBloques) {
+    
+        int numPisos = 0;
+        
+        int fila = 1;
+        while(numBloques > 0){
+
+                numBloques = numBloques - (fila*fila);
+                fila = fila + 2;
+                numPisos++;
+        }
+        
+        return numPisos;
+    
+    }
+
+}
