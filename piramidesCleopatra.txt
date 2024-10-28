@@ -1,0 +1,69 @@
+import java.util.Scanner;
+import static java.lang.Math.abs;
+
+public class PiramidesCleopatra {
+
+    private static int filas;
+    private static final int ANIOS = 3;
+    private static int[][] aniosArray;
+    private static String entrada;
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    private static void cargarDatos(int filas) {
+
+        for (int i = 0; i < filas; i++) {
+            entrada = scanner.nextLine();
+
+            if (entrada.trim().isEmpty()) {
+                continue;
+            }
+
+            String[] partes = entrada.split(" ");
+
+            for (int j = 0; j < ANIOS; j++) {
+                aniosArray[i][j] = Integer.parseInt(partes[j]);
+            }
+        }
+    }
+
+    private static int calcularDistancia(int inicio, int fin) {
+        // Si  valores signos distintos, sumar valores absolutos menos 1
+        if ((inicio < 0 && fin > 0) || (inicio > 0 && fin < 0)) {
+            return abs(inicio) + abs(fin) - 1;
+        } else {
+            return abs(inicio - fin);
+        }
+    }
+
+    private static String encontrarCercano(int i) {
+        int valorA = aniosArray[i][0];
+        int valorB = aniosArray[i][1];
+        int valorC = aniosArray[i][2];
+
+        int distanciaAB = calcularDistancia(valorA, valorB);
+        int distanciaCB = calcularDistancia(valorC, valorB);
+
+        if (distanciaAB == distanciaCB) {
+            return "EMPATE";
+        } else if (distanciaAB < distanciaCB) {
+            return String.valueOf(valorA);
+        } else {
+            return String.valueOf(valorC);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        filas = scanner.nextInt();
+        scanner.nextLine();
+        aniosArray = new int[filas][ANIOS];
+
+        cargarDatos(filas);
+
+        for (int i = 0; i < filas; i++) {
+            System.out.print(encontrarCercano(i));
+            System.out.println();
+        }
+    }
+}
